@@ -1,45 +1,41 @@
 const score = require('./bowling');
 
 describe('Inputs without spare or strike', () => {
-  test('With scores not equal to zero', () =>{
+  test('With scores not equal to zero', () => {
     expect(score([3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(90);
   });
 
-  //with score 0
+  // with score 0
 
-  test('With zero score included', () =>{
+  test('With zero score included', () => {
     expect(score([0, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(87);
   });
 
-  test('With all scores as zero', () =>{
+  test('With all scores as zero', () => {
     expect(score([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])).toBe(0);
   });
-
-
 });
 
 
 describe('Inputs with spares but not in the 10th frame', () => {
-  test('With one spare', () =>{
+  test('With one spare', () => {
     expect(score([4, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(94);
   });
 
-  test('With more than one spare', () =>{
+  test('With more than one spare', () => {
     expect(score([4, 6, 3, 6, 3, 6, 4, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(98);
   });
-
 });
 
 
 describe('Inputs with strikes but not in the 10th frame', () => {
-  test('With strike in the first chance', () =>{
+  test('With strike in the first chance', () => {
     expect(score([10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3])).toBe(100);
   });
 
-  test('With strike in the middle', () =>{
+  test('With strike in the middle', () => {
     expect(score([3, 6, 3, 6, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3])).toBe(100);
   });
-
 });
 
 
@@ -48,17 +44,14 @@ describe('Inputs with strikes and spares not in the 10th frame', () => {
     expect(score([10, 6, 4, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3])).toBe(108);
   });
 
-  test('With strike and spare in the middle', () =>{
+  test('With strike and spare in the middle', () => {
     expect(score([3, 6, 3, 6, 10, 6, 3, 6, 4, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3])).toBe(107);
   });
 
   test('With spare in the first frame and strike in the middle', () => {
     expect(score([4, 6, 3, 6, 10, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3])).toBe(104);
   });
-
 });
-
-
 
 
 describe('Inputs with multiple spares', () => {
@@ -73,18 +66,16 @@ describe('Inputs with multiple spares', () => {
   test('With all strikes except the last frame', () => {
     expect(score([4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 3, 6])).toBe(134);
   });
-
 });
 
 
-
 describe('Inputs with multiple strikes', () => {
-  test('With two consecutive strikes', () =>{
-    expect(score([10, 10 , 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(114);
+  test('With two consecutive strikes', () => {
+    expect(score([10, 10, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(114);
   });
 
   test('With not consecutive spares', () => {
-    expect(score([10, 10 , 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(114);
+    expect(score([10, 10, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6])).toBe(114);
   });
 });
 
@@ -112,13 +103,12 @@ describe('Inputs with all spares or strikes', () => {
   });
 
   test('With all spares', () => {
-    expect(score([6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6])).toBe(160);
+    expect(score([6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6])).toBe(160);
   });
 });
 
-//checking for valid Inputs
+// checking for valid Inputs
 describe('checking for valid Inputs', () => {
-
   test('with empty array', () => {
     expect(score([])).toBe('invalid input');
   });
@@ -128,19 +118,19 @@ describe('checking for valid Inputs', () => {
   });
 
   test('with scores more than 10', () => {
-    expect(score([6,4,11,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6])).toBe('invalid input');
+    expect(score([6, 4, 11, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6])).toBe('invalid input');
   });
 
   test('with scores which sum up more than 10', () => {
-    expect(score([6,5,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6])).toBe('invalid input');
+    expect(score([6, 5, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6])).toBe('invalid input');
   });
 
   test('with small array', () => {
-    expect(score([6,4,11,4,6,4,6,4])).toBe('invalid input');
+    expect(score([6, 4, 11, 4, 6, 4, 6, 4])).toBe('invalid input');
   });
 
   test('with large array', () => {
-    expect(score([6,4,11,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,4,6,10,10,10])).toBe('invalid input');
+    expect(score([6, 4, 11, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 10, 10, 10])).toBe('invalid input');
   });
 
   test('with no fill ball for strike in the last frame', () => {
@@ -149,5 +139,21 @@ describe('checking for valid Inputs', () => {
 
   test('with no fill ball for a spare in the last frame', () => {
     expect(score([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 4])).toBe('invalid input');
+  });
+
+  test('with undefined as a score', () => {
+    expect(score([6, 4, 11, 4, 6, 4, 6, 4, 6, 4, 6, undefined, 6, 4, 6, 4, 6, 4, 6, 4, 6])).toBe('invalid input');
+  });
+
+  test('with NaN as a score', () => {
+    expect(score([6, 4, 11, 4, 6, 4, 6, 4, 6, 4, 6, NaN, 6, 4, 6, 4, 6, 4, 6, 4, 6])).toBe('invalid input');
+  });
+
+  test('with undefined as a fill ball', () => {
+    expect(score([6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, undefined])).toBe('invalid input');
+  });
+
+  test('with NaN as a fill ball', () => {
+    expect(score([6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, 6, 4, NaN])).toBe('invalid input');
   });
 });
